@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  border: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
