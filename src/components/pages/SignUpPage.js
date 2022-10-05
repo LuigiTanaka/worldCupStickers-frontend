@@ -4,42 +4,45 @@ import { ThreeDots } from 'react-loader-spinner';
 import axios from "axios";
 import styled from "styled-components";
 import UserContext from "../../contexts/UserContext";
-import logo from "../../assets/logo.png";
 
-export default function Login() {
+export default function SignUpPage() {
     const { setUser, apiUrl } = useContext(UserContext);
 
     const navigate = useNavigate();
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [username, setUsername] = useState('');
+    const [pictureUrl, setPictureUrl] = useState('');
 
     const [loading, setLoading] = useState(false);
 
-    function login(event) {
+    function signUp(event) {
         event.preventDefault();
 
         setLoading(true);
 
-        if (!email || !password) {
+        if(!email || !password || !confirmPassword || !username) {
             alert("all fields need to be filled");
             setLoading(false);
         } else {
             const body = {
+                username,
                 email,
-                password
+                pictureUrl: pictureUrl ? pictureUrl : null,
+                password,
+                confirmPassword
             }
-
-            const promise = axios.post(`${apiUrl}/sign-in`, body);
-
+    
+            const promise = axios.post(`${apiUrl}/sign-up`, body);
+    
             promise
                 .then(res => {
                     setUser(res.data);
-                    localStorage.setItem("userData", JSON.stringify(res.data));
-                    navigate("/stickers");
+                    navigate("/");
                 }).catch((err) => {
-                    console.log(err.response);
-                    alert(err.response.data);
+                    alert(err.message);
                     setLoading(false);
                 })
         }
@@ -48,7 +51,11 @@ export default function Login() {
     function createForm() {
         if (!loading) {
             return (
-                <>
+                <>  
+                    <label>
+                        <h3>Username</h3>
+                        <Input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} value={username} />
+                    </label>
                     <label>
                         <h3>Email</h3>
                         <Input type="email" placeholder="e-mail" onChange={(e) => setEmail(e.target.value)} value={email} />
@@ -57,12 +64,24 @@ export default function Login() {
                         <h3>Password</h3>
                         <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                     </label>
-                    <Button type="submit">login</Button>
+                    <label>
+                        <h3>Confirm password</h3>
+                        <Input type="password" placeholder="confirm password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                    </label>
+                    <label>
+                        <h3>Picture url (optional)</h3>
+                        <Input type="text" placeholder="picture url" onChange={(e) => setPictureUrl(e.target.value)} value={pictureUrl} />
+                    </label>
+                    <Button type="submit">sign up</Button>
                 </>
             )
         } else {
             return (
                 <>
+                    <label>
+                        <h3>Username</h3>
+                        <Input type="text" placeholder="username" onChange={(e) => setUsername(e.target.value)} value={username} disabled={true} />
+                    </label>
                     <label>
                         <h3>Email</h3>
                         <Input type="email" placeholder="e-mail" onChange={(e) => setEmail(e.target.value)} value={email} disabled={true} />
@@ -70,6 +89,14 @@ export default function Login() {
                     <label>
                         <h3>Password</h3>
                         <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} disabled={true} />
+                    </label>
+                    <label>
+                        <h3>Confirm password</h3>
+                        <Input type="password" placeholder="confirm password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} disabled={true} />
+                    </label>
+                    <label>
+                        <h3>Picture url (optional)</h3>
+                        <Input type="text" placeholder="picture url" onChange={(e) => setPictureUrl(e.target.value)} value={pictureUrl} disabled={true} />
                     </label>
                     <Button type="submit" disabled={true}><ThreeDots height={70} width={70} color="#FFFFFF" /></Button>
                 </>
@@ -86,11 +113,10 @@ export default function Login() {
                 <h2>save and organize your stickers in an easy and practical way</h2>
             </Title>
             <Forms>
-                <img src={logo} alt="logo" />
-                <form onSubmit={login}>
+                <form onSubmit={signUp}>
                     {loginForm}
                 </form>
-                <h6 onClick={() => navigate("/sign-up")}>First time? Create an account!</h6>
+                <h6 onClick={() => navigate("/")}>already have an account? go to login</h6>
             </Forms>
         </Container>
     )
@@ -140,11 +166,12 @@ const Title = styled.div`
         align-items: center;
         justify-content: center;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        position: absolute;
+        z-index: 1;
+        position: fixed;
         top: 0;
 
         h1 {
-            font-size: 50px;
+            font-size: 60px;
             line-height: 84px;
         }
 
@@ -179,14 +206,9 @@ const Forms = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     width: 500px;
-
-    img {
-        width: 200px;
-        height: 200px;
-        margin: 50px 0;
-    }
 
     form {
         display: flex;
@@ -219,16 +241,14 @@ const Forms = styled.div`
         min-height: calc(100vh - 175px);
         justify-content: start;
 
-        img {
-            width: 180px;
-            height: 180px;
-            margin: 120px 0 10px 0;
+        form {
+            padding-top: 110px;
         }
 
         h6 {
             font-size: 17px;
             line-height: 20px;
-            margin-bottom: 80px;
+            padding-bottom: 110px;
         }
     }
 `
