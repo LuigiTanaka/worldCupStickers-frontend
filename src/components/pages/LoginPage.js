@@ -22,7 +22,7 @@ export default function Login() {
         setLoading(true);
 
         if (!email || !password) {
-            alert("todos os campos precisam ser preenchidos");
+            alert("all fields need to be filled");
             setLoading(false);
         } else {
             const body = {
@@ -30,13 +30,13 @@ export default function Login() {
                 password
             }
 
-            const promise = axios.post(`${apiUrl}/`, body);
+            const promise = axios.post(`${apiUrl}/sign-in`, body);
 
             promise
                 .then(res => {
                     setUser(res.data);
                     localStorage.setItem("userData", JSON.stringify(res.data));
-                    navigate("/timeline");
+                    navigate("/stickers");
                 }).catch((err) => {
                     console.log(err.response);
                     alert(err.response.data);
