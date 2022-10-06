@@ -4,6 +4,7 @@ import { useState } from "react";
 import UserContext from "../contexts/UserContext";
 
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 
 function App() {
 	const apiUrl = "http://localhost:5000";
@@ -30,6 +31,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<LoginPage />} />
+					<Route path="/sign-up" element={<SignUpPage />} />
 				</Routes>
 			</BrowserRouter>
 		</UserContext.Provider>
