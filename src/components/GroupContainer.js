@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from "styled-components";
+import CategoryContainer from "./CategoryContainer";
 
 export default function GroupContainer({ groupName }) {
     const categories = [{name: "Qatar"}, {name: "Ecuador"}, {name: "Senegal"}, {name: "Netherlands"}];
@@ -6,7 +7,7 @@ export default function GroupContainer({ groupName }) {
     function showCategories() {
         return (
             <>
-                { categories.map(category => <CategoriesContainer categoryName={category.name} />) }
+                { categories.map(category => <CategoryContainer categoryName={category.name} />) }
             </>
         );
     }
@@ -64,11 +65,6 @@ const CategoriesContainer = styled.div`
     justify-content: center;
     grid-template-columns: 360px 360px;
     grid-template-rows: 200px 200px;
-    gap: 20px;
-    
-
-    h5 {
-        background-color: red;
-        border-radius: 8px;
-    }
+    row-gap: 30px;
+    column-gap: 20px;
 `
