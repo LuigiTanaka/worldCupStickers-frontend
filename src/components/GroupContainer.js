@@ -32,6 +32,7 @@ const Container = styled.div`
     height: fit-content;
     display: flex;
     background-color: #F0F0E4;
+    box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -63,8 +64,8 @@ const CategoriesContainer = styled.div`
     padding: 30px;
     display: grid;
     justify-content: center;
-    grid-template-columns: 360px 360px;
-    grid-template-rows: 200px 200px;
+    grid-template-columns: 380px 380px;
+    grid-template-rows: 220px 220px;
     row-gap: 30px;
     column-gap: 20px;
 `
