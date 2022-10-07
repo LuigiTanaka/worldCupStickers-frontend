@@ -83,6 +83,7 @@ const Porcentage = styled.div`
     h3 {
         font-size: 24px;
         font-weight: 700;
+        color: #6b0b1a;
     }
 `
 
@@ -100,11 +101,14 @@ const Data = styled.div`
     }
 
     h4 {
-        font-size: 24px;
-        font-weight: 300;
+        font-size: 26px;
+        font-weight: 500;
+        color: #6b0b1a;
     }
 
     strong {
+        font-size: 24px;
         font-weight: 800;
+        color: #000000;
     }
 `
