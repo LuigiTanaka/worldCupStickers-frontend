@@ -9,11 +9,23 @@ export default function StickersPage() {
     const [loading, setLoading] = useState("");
     //<Triangle color="#FFFFFF" height="160" width="160" />
 
+    const groups = [{name: "GROUP A"}, {name: "GROUP B"}, {name: "GROUP C"}];
+
+    function showGroups() {
+        return (
+            <>
+                { groups.map(group => <GroupContainer groupName={group.name} />) }
+            </>
+        );
+    }
+
+    const groupsContainer = showGroups();
+
     function showMainBody() {
         return (
             <MainBody>
                 <GeneralFramework />
-                <GroupContainer />
+                {groupsContainer}
             </MainBody>
         );
     }
@@ -30,11 +42,13 @@ export default function StickersPage() {
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #6b0b1a;
+    padding-bottom: 200px;
 `
 
 const Loading = styled.div`

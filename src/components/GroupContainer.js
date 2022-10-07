@@ -1,12 +1,27 @@
 import styled from "styled-components"
 
-export default function GroupContainer() {
+export default function GroupContainer({ groupName }) {
+    const categories = [{name: "Qatar"}, {name: "Ecuador"}, {name: "Senegal"}, {name: "Netherlands"}];
+
+    function showCategories() {
+        return (
+            <>
+                { categories.map(category => <CategoriesContainer categoryName={category.name} />) }
+            </>
+        );
+    }
+
+    const categoriesContainer = showCategories();
+
     return (
         <Container>
             <Title>
-                <h1>{`GROUP A`}</h1>
+                <h1>{groupName}</h1>
                 <h2>{`5% (2/80)`}</h2>
             </Title>
+            <CategoriesContainer>
+                {categoriesContainer}
+            </CategoriesContainer>
         </Container>
     );
 }
@@ -18,6 +33,7 @@ const Container = styled.div`
     background-color: #F0F0E4;
     border-radius: 8px;
     display: flex;
+    flex-direction: column;
 `
 
 const Title = styled.div`
@@ -39,5 +55,20 @@ const Title = styled.div`
     h2 {
         font-size: 18px;
         font-weight: 500;
+    }
+`
+
+const CategoriesContainer = styled.div`
+    padding: 30px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 360px 360px;
+    grid-template-rows: 200px 200px;
+    gap: 20px;
+    
+
+    h5 {
+        background-color: red;
+        border-radius: 8px;
     }
 `
