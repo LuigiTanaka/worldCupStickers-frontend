@@ -19,7 +19,6 @@ export default function StickersPage() {
 
         const promise = axios.get(URL, AUT);
         promise.then((response) => {
-            console.log(response.data);
             setGroups(response.data);
             setLoading(null);
         }).catch((err) => {

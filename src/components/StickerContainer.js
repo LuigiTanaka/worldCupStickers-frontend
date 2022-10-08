@@ -1,14 +1,54 @@
 import { useContext } from "react";
 import styled from "styled-components"
 import UserContext from "../contexts/UserContext";
+import axios from "axios";
 
-export default function StickerContainer({ stickerName, quantity }) {
-    const { disable, setDisable } = useContext(UserContext);
+export default function StickerContainer({ stickerId, stickerName, quantity }) {
+    const { apiUrl, authorization, update, setUpdate, disabled, setDisabled } = useContext(UserContext);
+
+    function postStickerUser() {
+        setDisabled(true);
+
+        const URL = `${apiUrl}/stickers/${stickerId}`;
+        const AUT = authorization;
+
+        const promise = axios.post(URL, {}, AUT);
+
+        promise.then((response) => {
+            setUpdate(!update);
+            setDisabled(false);
+        }).catch((err) => {
+            console.log(err);
+            setDisabled(false);
+        });
+    }
+
+    function incrementOrDeleteStickerUser() {
+        alert("modal");
+    }
     
+    function showSticker() {
+        if(quantity === 0) {
+            return (
+                <Container quantity={quantity} onClick={disabled ? null : postStickerUser}>
+                    <h4>{stickerName}</h4>
+                </Container>
+            );
+        } else {
+            return (
+                <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
+                    <h4>{stickerName}</h4>
+                </Container>
+            );
+        }
+    }
+
+    const sticker = showSticker();
+
     return (
-        <Container quantity={quantity}>
-            <h4>{stickerName}</h4>
-        </Container>
+        <>
+            {sticker}
+        </>
     );
 }
 

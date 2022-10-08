@@ -15,7 +15,6 @@ export default function GroupContainer({ groupName, groupId }) {
 
         const promise = axios.get(URL, AUT);
         promise.then((response) => {
-            console.log(response.data);
             setCategories(response.data);
         }).catch((err) => {
             console.log(err);
