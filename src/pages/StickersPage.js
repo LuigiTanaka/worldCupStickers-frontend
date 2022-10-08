@@ -8,13 +8,10 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
 export default function StickersPage() {
-    const { user, apiUrl, authorization, update, setUpdate } = useContext(UserContext);
+    const { apiUrl, authorization } = useContext(UserContext);
 
     const [groups, setGroups] = useState([]);
-    const [loading, setLoading] = useState("");
-    //<Triangle color="#FFFFFF" height="160" width="160" />
-
-    //const groups = [{name: "GROUP A"}, {name: "GROUP B"}, {name: "GROUP C"}];
+    const [loading, setLoading] = useState(<Triangle color="#FFFFFF" height="160" width="160" />);
 
     useEffect(() => {
         const URL = `${apiUrl}/stickers/groups`;
