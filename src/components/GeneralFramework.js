@@ -13,7 +13,7 @@ export default function GeneralFramework() {
     return (
         <Container>
             <LeftSide>
-                <h2>{`${user.userData.username.toUpperCase()}'S ALBUM`}</h2>
+                <h2>{`${user.userData.username.toUpperCase()}'s ALBUM`}</h2>
                 <img src={album} alt="album"/>
             </LeftSide>
             <RightSide>
@@ -48,16 +48,17 @@ const Container = styled.div`
 `
 
 const LeftSide = styled.div`
-    width: 200px;
+    width: 230px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-right: 20px;
+    padding: 0 20px;
     border-right: 2px solid #000000;
 
     h2 {
+        text-align: center;
         font-size: 24px;
         font-weight: 700;
         margin-bottom: 10px;

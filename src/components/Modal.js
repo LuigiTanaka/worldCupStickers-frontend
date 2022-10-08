@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { IoClose, IoTrashSharp, IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 import styled from "styled-components";
 import userContext from "../contexts/UserContext";
@@ -10,18 +10,16 @@ export default function Modal({ showModal, setShowModal }) {
     const { apiUrl, authorization, sticker, update, setUpdate } = useContext(userContext);
 
     const [repeated, setRepeated] = useState(0);
-    const [enable, setEnable] = useState(0);
 
     function closeModal(e) {
         if(modalRef.current === e.target) {
             setRepeated(0);
-            setEnable(0);
             setShowModal(false);
         }
     }
 
     function removeSticker() {
-        if(window.confirm(`Are you sure you want to remove all (${sticker.quantity + repeated}) stickers?`)) {
+        if(window.confirm(`Are you sure you want to remove all stickers of ${sticker.name}?`)) {
             const URL = `${apiUrl}/stickers/${sticker.id}`;
             const AUT = authorization;
 
@@ -29,7 +27,6 @@ export default function Modal({ showModal, setShowModal }) {
 
             promise.then((response) => {
                 setRepeated(0);
-                setEnable(0);
                 setShowModal(false);
             }).catch((err) => {
                 console.log(err);
@@ -37,21 +34,31 @@ export default function Modal({ showModal, setShowModal }) {
         }
     }
 
+    function updateRepeated() {
+        const URL = `${apiUrl}/stickers/${sticker.id}`;
+        const AUT = authorization;
+        const BODY = { quantity: sticker.quantity + repeated };
+
+        const promise = axios.put(URL, BODY, AUT);
+
+        promise.then((response) => {
+            setRepeated(0);
+            setShowModal(false);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
     function removeRepeated() {
-        if(repeated === 1) {
+        const sum = sticker.quantity + repeated - 1;
+        if(sum === 1) {
             setRepeated(repeated-1);
-            setEnable(0);
-        } else if( repeated > 1) {
+        } else if( sum > 1) {
             setRepeated(repeated-1);
-        } else {
-            setEnable(0);
-        }
+        } 
     }
 
     function addRepeated() {
-        if(repeated === 0) {
-            setEnable(1);
-        }
         setRepeated(repeated+1);
     }
 
@@ -62,7 +69,6 @@ export default function Modal({ showModal, setShowModal }) {
                     <h1>REMOVE OR UPDATE REPEATED</h1>
                     <IoClose onClick={() => {
                         setRepeated(0);
-                        setEnable(0);
                         setShowModal(false)
                     }}/>
                     <ModalContent>
@@ -75,15 +81,15 @@ export default function Modal({ showModal, setShowModal }) {
                             <IoTrashSharp onClick={removeSticker}/>
                         </div>
                         <div className="thirdRow">
-                            <h2>Include repeated</h2>
+                            <h2>Update repeated</h2>
                             <div>
-                                <IoRemoveCircleOutline onClick={removeRepeated} className={enable ? "enable" : "notEnable"} />
+                                <IoRemoveCircleOutline onClick={removeRepeated} className={sticker.quantity + repeated > 1 ? "enable" : "notEnable"} />
                                 <h3>{repeated}</h3>
                                 <IoAddCircleOutline onClick={addRepeated}/>
                             </div>
                         </div>
                     </ModalContent>
-                    <button>CONFIRM</button>
+                    <button onClick={updateRepeated} disabled={repeated === 0}>CONFIRM</button>
                 </ModalWrapper>
             </Background>
         );
@@ -140,9 +146,15 @@ const ModalWrapper = styled.div`
 
     button {
         font-size: 18px;
-        padding: 2px 14px;
-        border: 1px solid #000000;
+        font-weight: 500;
+        padding: 3px 18px;
+        border: 2px solid #000000;
         margin-bottom: 8px;
+
+        &:disabled {
+            opacity: 0.6;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
     }
 `
 
