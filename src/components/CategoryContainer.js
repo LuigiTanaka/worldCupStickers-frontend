@@ -1,13 +1,33 @@
+import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import StickerContainer from "./StickerContainer";
+import UserContext from "../contexts/UserContext";
+import axios from "axios";
 
-export default function CategoryContainer({ categoryName }) {
-    const stickers = [{name: "QAT 1", missing: true}, {name: "QAT 2", missing: false}, {name: "QAT 3", missing: true}, {name: "QAT 4", missing: true}, {name: "QAT 5", missing: true}, {name: "QAT 6", missing: true}, {name: "QAT 7", missing: true}, {name: "QAT 8", missing: true}, {name: "QAT 9", missing: true}, {name: "QAT 10", missing: true}, {name: "QAT 11", missing: false}, {name: "QAT 12", missing: true}, {name: "QAT 13", missing: true}, {name: "QAT 14", missing: true}, {name: "QAT 15", missing: true}, {name: "QAT 16", missing: true}, {name: "QAT 17", missing: true}, {name: "QAT 18", missing: true}, {name: "QAT 19", missing: true}, {name: "QAT 20", missing: true}];
+export default function CategoryContainer({ categoryName, categoryId }) {
+    //const stickers = [{name: "QAT 1", missing: true}, {name: "QAT 2", missing: false}, {name: "QAT 3", missing: true}, {name: "QAT 4", missing: true}, {name: "QAT 5", missing: true}, {name: "QAT 6", missing: true}, {name: "QAT 7", missing: true}, {name: "QAT 8", missing: true}, {name: "QAT 9", missing: true}, {name: "QAT 10", missing: true}, {name: "QAT 11", missing: false}, {name: "QAT 12", missing: true}, {name: "QAT 13", missing: true}, {name: "QAT 14", missing: true}, {name: "QAT 15", missing: true}, {name: "QAT 16", missing: true}, {name: "QAT 17", missing: true}, {name: "QAT 18", missing: true}, {name: "QAT 19", missing: true}, {name: "QAT 20", missing: true}];
+
+    const { apiUrl, authorization } = useContext(UserContext);
+
+    const [stickers, setStickers] = useState([]);
+
+    useEffect(() => {
+        const URL = `${apiUrl}/stickers/${categoryId}`;
+        const AUT = authorization;
+
+        const promise = axios.get(URL, AUT);
+        promise.then((response) => {
+            console.log(response.data);
+            setStickers(response.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [apiUrl, authorization, categoryId]);
 
     function showStickers() {
         return (
             <>
-                { stickers.map(sticker => <StickerContainer stickerName={sticker.name} missing={sticker.missing} />) }
+                { stickers.map(sticker => <StickerContainer stickerName={sticker.name} quantity={sticker.quantity} />) }
             </>
         );
     }

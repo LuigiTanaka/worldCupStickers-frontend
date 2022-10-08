@@ -25,7 +25,7 @@ export default function GroupContainer({ groupName, groupId }) {
     function showCategories() {
         return (
             <>
-                { categories.map(category => <CategoryContainer categoryName={category.name} />) }
+                { categories.map(category => <CategoryContainer categoryName={category.name} categoryId={category.id} />) }
             </>
         );
     }
