@@ -32,7 +32,7 @@ export default function StickersPage() {
     function showGroups() {
         return (
             <>
-                { groups.map(group => <GroupContainer groupName={group.name} />) }
+                { groups.map(group => <GroupContainer groupName={group.name} groupId={group.id} />) }
             </>
         );
     }

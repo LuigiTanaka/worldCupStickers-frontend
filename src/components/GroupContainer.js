@@ -1,8 +1,26 @@
+import { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import CategoryContainer from "./CategoryContainer";
+import UserContext from "../contexts/UserContext";
+import axios from "axios";
 
-export default function GroupContainer({ groupName }) {
-    const categories = [{name: "Qatar"}, {name: "Ecuador"}, {name: "Senegal"}, {name: "Netherlands"}];
+export default function GroupContainer({ groupName, groupId }) {
+    const { apiUrl, authorization } = useContext(UserContext);
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        const URL = `${apiUrl}/stickers/categories/${groupId}`;
+        const AUT = authorization;
+
+        const promise = axios.get(URL, AUT);
+        promise.then((response) => {
+            console.log(response.data);
+            setCategories(response.data);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [apiUrl, authorization, groupId]);
 
     function showCategories() {
         return (

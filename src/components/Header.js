@@ -72,7 +72,6 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
-    font-family: 'Gemunu Libre', sans-serif;
 `
 
 const HeaderStyled = styled.header`
@@ -84,8 +83,10 @@ const HeaderStyled = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 1;
     background-color: #F0F0E4;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
+
     &>img {
         width: 120px;
         height: 120px;
@@ -93,6 +94,7 @@ const HeaderStyled = styled.header`
         align-self: center;
         margin: 0 25px 0 20px;
     }
+
     @media(max-width: 992px) {
         &>img {
             display: none;
