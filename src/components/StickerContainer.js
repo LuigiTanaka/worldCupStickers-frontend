@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import styled from "styled-components"
+import UserContext from "../contexts/UserContext";
 
 export default function StickerContainer({ stickerName, missing }) {
+    const { disable, setDisable } = useContext(UserContext);
+    
     return (
         <Container missing={missing}>
             <h4>{stickerName}</h4>

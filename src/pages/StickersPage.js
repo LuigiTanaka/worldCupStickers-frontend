@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import { Triangle } from 'react-loader-spinner';
 import GeneralFramework from "../components/GeneralFramework";
 import GroupContainer from "../components/GroupContainer";
+import UserContext from "../contexts/UserContext";
+import axios from "axios";
 
 export default function StickersPage() {
+    const { user, apiUrl, authorization, update, setUpdate } = useContext(UserContext);
+
+    const [groups, setGroups] = useState([]);
     const [loading, setLoading] = useState("");
     //<Triangle color="#FFFFFF" height="160" width="160" />
 
-    const groups = [{name: "GROUP A"}, {name: "GROUP B"}, {name: "GROUP C"}];
+    //const groups = [{name: "GROUP A"}, {name: "GROUP B"}, {name: "GROUP C"}];
+
+    useEffect(() => {
+        const URL = `${apiUrl}/stickers/groups`;
+        const AUT = authorization;
+
+        const promise = axios.get(URL, AUT);
+        promise.then((response) => {
+            console.log(response.data);
+            setGroups(response.data);
+            setLoading(null);
+        }).catch((err) => {
+            console.log(err);
+            setLoading(null);
+        });
+    }, [apiUrl, authorization]);
+
 
     function showGroups() {
         return (

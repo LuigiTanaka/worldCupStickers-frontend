@@ -11,6 +11,8 @@ function App() {
 	const apiUrl = "http://localhost:5000";
 
 	const [user, setUser] = useState(getUser);
+	const [update, setUpdate] = useState(false);
+	const [disabled, setDisabled] = useState(false);
 
 	function getUser() {
         const userData = localStorage.getItem("userData");
@@ -26,7 +28,7 @@ function App() {
         }
     }
 
-	const contextValue = { user, setUser, apiUrl, authorization };
+	const contextValue = { user, setUser, apiUrl, authorization, update, setUpdate, disabled, setDisabled };
 	return (
 		<UserContext.Provider value={contextValue}>
 			<BrowserRouter>
