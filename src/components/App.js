@@ -11,6 +11,7 @@ function App() {
 	const apiUrl = "http://localhost:5000";
 
 	const [user, setUser] = useState(getUser);
+	const [sticker, setSticker] = useState({});
 	const [update, setUpdate] = useState(false);
 	const [disabled, setDisabled] = useState(false);
 	const [showModal, setShowModal] = useState(false);
@@ -29,7 +30,7 @@ function App() {
         }
     }
 
-	const contextValue = { user, setUser, apiUrl, authorization, update, setUpdate, disabled, setDisabled, showModal, setShowModal };
+	const contextValue = { user, setUser, apiUrl, authorization, update, setUpdate, disabled, setDisabled, showModal, setShowModal, sticker, setSticker };
 	return (
 		<UserContext.Provider value={contextValue}>
 			<BrowserRouter>

@@ -1,30 +1,85 @@
-import { useState } from "react";
+import { useState, useRef, useContext } from "react";
 import { IoClose, IoTrashSharp, IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 import styled from "styled-components";
+import userContext from "../contexts/UserContext";
+import axios from "axios";
 
 export default function Modal({ showModal, setShowModal }) {
+    const modalRef = useRef();
+
+    const { apiUrl, authorization, sticker, update, setUpdate } = useContext(userContext);
+
+    const [repeated, setRepeated] = useState(0);
+    const [enable, setEnable] = useState(0);
+
+    function closeModal(e) {
+        if(modalRef.current === e.target) {
+            setRepeated(0);
+            setEnable(0);
+            setShowModal(false);
+        }
+    }
+
+    function removeSticker() {
+        if(window.confirm(`Are you sure you want to remove all (${sticker.quantity + repeated}) stickers?`)) {
+            const URL = `${apiUrl}/stickers/${sticker.id}`;
+            const AUT = authorization;
+
+            const promise = axios.delete(URL, AUT);
+
+            promise.then((response) => {
+                setRepeated(0);
+                setEnable(0);
+                setShowModal(false);
+            }).catch((err) => {
+                console.log(err);
+            });
+        }
+    }
+
+    function removeRepeated() {
+        if(repeated === 1) {
+            setRepeated(repeated-1);
+            setEnable(0);
+        } else if( repeated > 1) {
+            setRepeated(repeated-1);
+        } else {
+            setEnable(0);
+        }
+    }
+
+    function addRepeated() {
+        if(repeated === 0) {
+            setEnable(1);
+        }
+        setRepeated(repeated+1);
+    }
 
     function createModal() {
         return (
-            <Background>
-                <ModalWrapper showModal={showModal}>
-                    <h1>REMOVE OR ADD REPEATED</h1>
-                    <IoClose />
+            <Background ref={modalRef} onClick={closeModal}>
+                <ModalWrapper>
+                    <h1>REMOVE OR UPDATE REPEATED</h1>
+                    <IoClose onClick={() => {
+                        setRepeated(0);
+                        setEnable(0);
+                        setShowModal(false)
+                    }}/>
                     <ModalContent>
                         <div className="firstRow">
-                            <h2>QAT 1</h2>
-                            <h3><strong>Total: </strong>1</h3>
+                            <h2>{sticker.name}</h2>
+                            <h3><strong>Total: </strong>{sticker.quantity + repeated}</h3>
                         </div>
                         <div className="secondRow">
                             <h2>Remove sticker(s)</h2>
-                            <IoTrashSharp />
+                            <IoTrashSharp onClick={removeSticker}/>
                         </div>
                         <div className="thirdRow">
                             <h2>Include repeated</h2>
                             <div>
-                                <IoRemoveCircleOutline />
-                                <h3>1</h3>
-                                <IoAddCircleOutline />
+                                <IoRemoveCircleOutline onClick={removeRepeated} className={enable ? "enable" : "notEnable"} />
+                                <h3>{repeated}</h3>
+                                <IoAddCircleOutline onClick={addRepeated}/>
                             </div>
                         </div>
                     </ModalContent>
@@ -67,11 +122,11 @@ const ModalWrapper = styled.div`
 
     h1 {
         margin-top: 20px;
-        font-size: 24px;
+        font-size: 23px;
         font-weight: 600;
         color: #FFFFFF;
         background-color: #6B1B1A;
-        padding: 8px 20px;
+        padding: 8px 16px;
         border-radius: 6px;
     }
 
@@ -79,8 +134,8 @@ const ModalWrapper = styled.div`
         font-size: 30px; 
         color: #000000;
         position: absolute;
-        top: 8px;
-        right: 8px;
+        top: 6px;
+        right: 6px;
     }
 
     button {
@@ -101,23 +156,25 @@ const ModalContent = styled.div`
 
     .firstRow {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         padding-bottom: 5px;
         border-bottom: 1px solid #777777;
 
         h2 {
-            text-align: center;
+            width: 100px;
+            text-align: start;
             font-size: 26px;
             font-weight: 800;
             color: #6B1B1A;
-            margin-right: 160px;
+            margin-right: 106px;
         }
 
         h3 {
-            text-align: center;
+            width: 80px;
+            text-align: end;
             font-size: 22px;
             color: #000000;
+            margin-right: 3px;
         }
 
         strong {
@@ -143,7 +200,8 @@ const ModalContent = styled.div`
 
         svg {
             font-size: 26px;
-            margin-right: 23px;
+            box-sizing: content-box;
+            padding: 5px 23px;
         }
     }
 
@@ -173,13 +231,20 @@ const ModalContent = styled.div`
         }
 
         svg:first-child {
-            color: #c91e40;
             font-size: 24px;
         }
 
         svg:last-child {
             color: #085b08;
             font-size: 24px;
+        }
+
+        .notEnable {
+            color: #777777;
+        }
+
+        .enable {
+            color: #c91e40;
         }
     }
     
