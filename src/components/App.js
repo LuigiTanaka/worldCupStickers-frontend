@@ -13,6 +13,7 @@ function App() {
 	const [user, setUser] = useState(getUser);
 	const [update, setUpdate] = useState(false);
 	const [disabled, setDisabled] = useState(false);
+	const [showModal, setShowModal] = useState(false);
 
 	function getUser() {
         const userData = localStorage.getItem("userData");
@@ -28,7 +29,7 @@ function App() {
         }
     }
 
-	const contextValue = { user, setUser, apiUrl, authorization, update, setUpdate, disabled, setDisabled };
+	const contextValue = { user, setUser, apiUrl, authorization, update, setUpdate, disabled, setDisabled, showModal, setShowModal };
 	return (
 		<UserContext.Provider value={contextValue}>
 			<BrowserRouter>

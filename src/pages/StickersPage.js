@@ -6,9 +6,10 @@ import GeneralFramework from "../components/GeneralFramework";
 import GroupContainer from "../components/GroupContainer";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
+import Modal from "../components/Modal";
 
 export default function StickersPage() {
-    const { apiUrl, authorization } = useContext(UserContext);
+    const { apiUrl, authorization, showModal, setShowModal } = useContext(UserContext);
 
     const [groups, setGroups] = useState([]);
     const [loading, setLoading] = useState(<Triangle color="#FFFFFF" height="160" width="160" />);
@@ -51,6 +52,7 @@ export default function StickersPage() {
 
     return (
         <Container>
+            <Modal showModal={showModal} setShowModal={setShowModal} />
             <Header />
             {loading ? <Loading>{loading}</Loading> : mainBody}
         </Container>

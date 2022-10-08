@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
 export default function StickerContainer({ stickerId, stickerName, quantity }) {
-    const { apiUrl, authorization, update, setUpdate, disabled, setDisabled } = useContext(UserContext);
+    const { apiUrl, authorization, update, setUpdate, disabled, setDisabled, setShowModal } = useContext(UserContext);
 
     function postStickerUser() {
         setDisabled(true);
@@ -24,7 +24,7 @@ export default function StickerContainer({ stickerId, stickerName, quantity }) {
     }
 
     function incrementOrDeleteStickerUser() {
-        alert("modal");
+        setShowModal(true);
     }
     
     function showSticker() {
