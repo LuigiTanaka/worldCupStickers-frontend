@@ -8,7 +8,7 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import Modal from "../components/Modal";
 
-export default function StickersPage() {
+export default function RepeatedPage() {
     const { apiUrl, authorization, showModal, setShowModal } = useContext(UserContext);
 
     const [groups, setGroups] = useState([]);
@@ -21,10 +21,8 @@ export default function StickersPage() {
         const promise = axios.get(URL, AUT);
         promise.then((response) => {
             setGroups(response.data);
-            setLoading(null);
         }).catch((err) => {
             console.log(err);
-            setLoading(null);
         });
     }, [apiUrl, authorization]);
 
@@ -32,7 +30,7 @@ export default function StickersPage() {
     function showGroups() {
         return (
             <>
-                { groups.map(group => <GroupContainer groupName={group.name} groupId={group.id} />) }
+                { groups.map((group, index) => <GroupContainer key={index} groupName={group.name} groupId={group.id} repeatedPage={true} setLoading={setLoading} />) }
             </>
         );
     }
@@ -54,7 +52,8 @@ export default function StickersPage() {
         <Container>
             <Modal showModal={showModal} setShowModal={setShowModal} />
             <Header />
-            {loading ? <Loading>{loading}</Loading> : mainBody}
+            {mainBody}
+            {loading ? <Loading>{loading}</Loading> : null}
         </Container>
     );
 }
@@ -71,11 +70,14 @@ const Container = styled.div`
 `
 
 const Loading = styled.div`
-    height: 100vh;
     width: 100%;
+    height: 100%;
+    background-color: #601717;
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 2;
 `
 
 const MainBody = styled.div`

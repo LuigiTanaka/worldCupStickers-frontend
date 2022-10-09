@@ -138,7 +138,7 @@ const Container = styled.div`
 const Title = styled.div`
     width: calc(100% - 500px);
     height: 100vh;
-    background-color: #8B2938;
+    background-color: #601717;
     display: flex;
     flex-direction: column;
     padding: 100px 20px;
@@ -222,7 +222,7 @@ const Forms = styled.div`
         h3 {
             font-size: 20px;
             font-weight: 700;
-            color: #8B2938;
+            color: #721b1b;
             margin-bottom: 5px;
         }
     }
@@ -294,7 +294,7 @@ const Button = styled.button`
     font-size: 27px;
     line-height: 40px;
     color: #FFFFFF;
-    background-color: #8B2938;
+    background-color: #721b1b;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -3,11 +3,27 @@ import styled from "styled-components";
 import CategoryContainer from "./CategoryContainer";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
-export default function GroupContainer({ groupName, groupId }) {
+export default function GroupContainer({ groupName, groupId, repeatedPage, setLoading }) {
     const { apiUrl, authorization } = useContext(UserContext);
 
     const [categories, setCategories] = useState([]);
+    const [totalGroup, setTotalGroup] = useState(0);
+    const [totalOwnerGroup, setTotalOwnerGroup] = useState(0);
+
+    useEffect(() => {
+        const URL = `${apiUrl}/stickers-data/groups/${groupId}`;
+        const AUT = authorization;
+
+        const promise = axios.get(URL, AUT);
+        promise.then((response) => {
+            setTotalGroup(response.data.sumAllGroup);
+            setTotalOwnerGroup(response.data.sumOwnerGroup);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [apiUrl, authorization, groupId]);
 
     useEffect(() => {
         const URL = `${apiUrl}/stickers/categories/${groupId}`;
@@ -24,19 +40,54 @@ export default function GroupContainer({ groupName, groupId }) {
     function showCategories() {
         return (
             <>
-                { categories.map(category => <CategoryContainer categoryName={category.name} categoryId={category.id} />) }
+                { categories.map((category, index) => <CategoryContainer key={index} categoryName={category.name} categoryId={category.id} repeatedPage={repeatedPage} setLoading={setLoading} />) }
             </>
         );
     }
 
-    const categoriesContainer = showCategories();
+    function createProgressBar() {
+        const now = Math.round((totalOwnerGroup/totalGroup)*100);
+        if (now < 10) {
+            return (
+                <ProgressBar animated variant={"danger"} now={now} />
+            );
+        } else if (now < 30) {
+            return (
+                <ProgressBar animated variant={"warning"} now={now} />
+            );
+        } else if (now < 70) {
+            return (
+                <ProgressBar animated variant={"info"} now={now} />
+            );
+        } else {
+            return (
+                <ProgressBar animated variant={"success"} now={now} />
+            );
+        }
+    }
 
-    //adicionar h2 abaixo do h1 no title quando implementar porcentagens
+    function createPorcentage() {
+        if(!repeatedPage) {
+            return (
+                <div>
+                    <h2>{`${Math.round((totalOwnerGroup/totalGroup)*100)}% (${totalOwnerGroup}/${totalGroup})`}</h2>
+                    {progressBar}
+                </div>
+            );
+        } else {
+            return null;
+        }
+    }
+
+    const categoriesContainer = showCategories();
+    const progressBar = createProgressBar();    
+    const porcentage = createPorcentage();
     
     return (
         <Container>
             <Title>
                 <h1>{groupName}</h1>
+                {porcentage}
             </Title>
             <CategoriesContainer>
                 {categoriesContainer}
@@ -67,7 +118,7 @@ const Container = styled.div`
 
 const Title = styled.div`
     width: 100%;
-    height: 60px;
+    height: 72px;
     background-color: #5BD0B8;
     border-radius: 8px 8px 0 0;
     display: flex;
@@ -84,11 +135,18 @@ const Title = styled.div`
     h2 {
         font-size: 18px;
         font-weight: 500;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    div {
+        width: 100%;
+        border-radius: 0px;
     }
 
     @media(max-width: 500px) {
         border-radius: 0;
-        height: 60px;
+        height: 68px;
 
         h1 {
             font-size: 28px;

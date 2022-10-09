@@ -54,7 +54,7 @@ export default function Header() {
                 <img src={logoHeader} alt="logo" onClick={() => navigate("/stickers")} />
                 <Middle>
                     <h1 onClick={() => navigate("/stickers")}>WORLD CUP STICKERS</h1>
-                    <div>
+                    <div onClick={() => navigate("/repeated")}>
                         <IoCopySharp />
                         <h3>Repeated</h3>
                     </div>

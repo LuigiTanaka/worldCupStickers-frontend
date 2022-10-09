@@ -3,7 +3,7 @@ import styled from "styled-components"
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
-export default function StickerContainer({ stickerId, stickerName, quantity }) {
+export default function StickerContainer({ stickerId, stickerName, quantity, repeatedPage }) {
     const { apiUrl, authorization, update, setUpdate, disabled, setDisabled, setShowModal, setSticker } = useContext(UserContext);
 
     function postStickerUser() {
@@ -33,19 +33,45 @@ export default function StickerContainer({ stickerId, stickerName, quantity }) {
     }
     
     function showSticker() {
-        if(quantity === 0) {
+        if(repeatedPage && quantity <= 1) {
+            return null;
+
+        } else if (repeatedPage && quantity === 2) {
+            return (
+                <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
+                    <h4>{stickerName}</h4>
+                </Container>
+            );
+
+        } else if (repeatedPage) {
+            return (
+                <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
+                    <Quantity>{quantity-1}</Quantity>
+                    <h4>{stickerName}</h4>
+                </Container>
+            );
+
+        } else if(quantity === 0) {
             return (
                 <Container quantity={quantity} onClick={disabled ? null : postStickerUser}>
                     <h4>{stickerName}</h4>
                 </Container>
             );
+
+        } else if(quantity === 1) {
+            return (
+                <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
+                    <h4>{stickerName}</h4>
+                </Container>
+            );
+
         } else {
             return (
                 <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
                     <Quantity>{quantity}</Quantity>
                     <h4>{stickerName}</h4>
                 </Container>
-            );
+            ); 
         }
     }
 
@@ -78,15 +104,15 @@ const Container = styled.div`
 
 const Quantity = styled.div`
     font-weight: 700;
-    font-size: 16px;
-    width: 20px;
-    height: 20px;
+    font-size: 15px;
+    width: 22px;
+    height: 22px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #af3137;
     border-radius: 50%;
-    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
     color: #ffffff;
     border: 1px solid #ffffff;
     position: absolute;

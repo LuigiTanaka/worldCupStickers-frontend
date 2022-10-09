@@ -6,6 +6,7 @@ import UserContext from "../contexts/UserContext";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import StickersPage from "../pages/StickersPage";
+import RepeatedPage from "../pages/RepeatedPage";
 
 function App() {
 	const apiUrl = "http://localhost:5000";
@@ -38,6 +39,7 @@ function App() {
 					<Route path="/" element={<LoginPage />} />
 					<Route path="/sign-up" element={<SignUpPage />} />
 					<Route path="/stickers" element={<StickersPage />} />
+					<Route path="/repeated" element={<RepeatedPage />} />
 				</Routes>
 			</BrowserRouter>
 		</UserContext.Provider>
