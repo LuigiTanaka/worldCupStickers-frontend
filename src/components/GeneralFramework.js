@@ -43,8 +43,18 @@ const Container = styled.div`
     background-color: #F0F0E4;
     box-shadow: 5px 5px 5px 3px rgba(0, 0, 0, 0.4);
     border-radius: 8px;
-    display: flex;
     justify-content: space-between;
+
+    @media(max-width: 992px) {
+        width: 90%;
+        height: 180px;
+    }
+
+    @media(max-width: 500px) {
+        width: 100%;
+        border-radius: 0;
+        padding: 20px 10px;
+    }
 `
 
 const LeftSide = styled.div`
@@ -69,6 +79,31 @@ const LeftSide = styled.div`
         width: 100px;
         height: 120px;
     }
+
+    @media(max-width: 992px) {
+        width: 30%;
+
+        h2 {
+            font-size: 22px;
+        }
+
+        img {
+            width: 80px;
+            height: 100px;
+        }
+    }
+
+    @media(max-width: 700px) {
+        width: 45%;
+        border-radius: 0;
+        padding: 0 20px 0 0 ;
+    }
+
+    @media(max-width: 500px) {
+        width: 40%;
+        border-radius: 0;
+        padding: 0 15px 0 0;
+    }
 `
 
 const RightSide = styled.div`
@@ -77,6 +112,19 @@ const RightSide = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 4px 20px;
+
+    @media(max-width: 992px) {
+        width: 70%;
+    }
+
+    @media(max-width: 700px) {
+        width: 55%;
+    }
+
+    @media(max-width: 500px) {
+        width: 60%;
+        padding: 4px 0 0 15px;
+    }
 `
 
 const Porcentage = styled.div`
@@ -86,6 +134,18 @@ const Porcentage = styled.div`
         font-size: 24px;
         font-weight: 700;
         color: #6b0b1a;
+    }
+
+    @media(max-width: 992px) {
+        h3 {
+            font-size: 22px;
+        }
+    }
+
+    @media(max-width: 500px) {
+        h3 {
+            font-size: 20px;
+        }
     }
 `
 
@@ -112,5 +172,30 @@ const Data = styled.div`
         font-size: 24px;
         font-weight: 800;
         color: #000000;
+    }
+
+    @media(max-width: 992px) {
+        gap: 40px;
+        h4 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        strong {
+            font-size: 20px;
+            font-weight: 700;
+        }
+    }
+
+    @media(max-width: 700px) {
+        flex-direction: column;
+        gap: 4px;
+        align-items: start;
+        margin-top: 20px;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
     }
 `
