@@ -79,7 +79,6 @@ const Loading = styled.div`
 `
 
 const MainBody = styled.div`
-    max-width: fit-content;
     width: 100%;
     height: fit-content;
     display: flex;

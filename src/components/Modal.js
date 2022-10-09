@@ -156,6 +156,11 @@ const ModalWrapper = styled.div`
             border: 2px solid rgba(0, 0, 0, 0.3);
         }
     }
+
+    @media(max-width: 400px) {
+        width: 100%;
+        border-radius: 0;
+    }
 `
 
 const ModalContent = styled.div`
