@@ -107,15 +107,19 @@ const CategoriesContainer = styled.div`
     display: grid;
     justify-content: center;
     grid-template-columns: 380px 380px;
-    grid-template-rows: 220px 220px;
     row-gap: 30px;
     column-gap: 20px;
 
     @media(max-width: 992px) {
+        padding: 30px 60px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    @media(max-width: 500px) {
+        padding: 30px;
     }
 
     @media(max-width: 400px) {

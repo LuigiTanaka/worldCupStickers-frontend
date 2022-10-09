@@ -90,18 +90,17 @@ const Title = styled.div`
 
 const StickersContainer = styled.div`
     padding: 20px;
+    height: fit-content;
     display: grid;
     justify-content: center;
     grid-template-columns: 38px 38px 38px 38px 38px 38px 38px;
-    grid-template-rows: 38px 38px 38px;
     gap: 12px;
 
     @media(max-width: 992px) {
         width: 100%;
     }
 
-    @media(max-width: 500px) {
+    @media(max-width: 440px) {
         grid-template-columns: 36px 36px 36px 36px 36px 36px;
-        grid-template-rows: 36px 36px 36px 36px;
     }
 `

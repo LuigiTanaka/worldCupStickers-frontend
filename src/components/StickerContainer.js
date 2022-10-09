@@ -42,6 +42,7 @@ export default function StickerContainer({ stickerId, stickerName, quantity }) {
         } else {
             return (
                 <Container quantity={quantity} onClick={disabled ? null : incrementOrDeleteStickerUser}>
+                    <Quantity>{quantity}</Quantity>
                     <h4>{stickerName}</h4>
                 </Container>
             );
@@ -59,16 +60,36 @@ export default function StickerContainer({ stickerId, stickerName, quantity }) {
 
 const Container = styled.div`
     display: flex;
+    height: 38px;
     align-items: center;
     justify-content: center;
     text-align: center;
     box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.25);
     background-color: ${props => props.quantity ? "#6B1B1A" : "#FFFFFF"};
     padding: 0 4px;
+    position: relative;
 
     h4 {
         font-size: 18px;
         font-weight: 700;
         color: ${props => props.quantity ? "#FFFFFF" : "#6B1B1A"};
     }
+`
+
+const Quantity = styled.div`
+    font-weight: 700;
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #af3137;
+    border-radius: 50%;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    position: absolute;
+    top: -10px;
+    right: -10px;
 `
