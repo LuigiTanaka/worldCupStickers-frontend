@@ -31,11 +31,12 @@ export default function GroupContainer({ groupName, groupId }) {
 
     const categoriesContainer = showCategories();
 
+    //adicionar h2 abaixo do h1 no title quando implementar porcentagens
+    
     return (
         <Container>
             <Title>
                 <h1>{groupName}</h1>
-                <h2>{`5% (2/80)`}</h2>
             </Title>
             <CategoriesContainer>
                 {categoriesContainer}

@@ -1,14 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import UserContext from "../contexts/UserContext";
 import styled from "styled-components";
-import album from "../assets/images/album.jpg"
+import album from "../assets/images/album.jpg";
+import axios from "axios";
 
 export default function GeneralFramework() {
-    const { user } = useContext(UserContext);
+    const { apiUrl, authorization, user } = useContext(UserContext);
 
-    const total = 678;
-    const missing = 610;
-    const repeated = 20;
+    const [total, setTotal] = useState(0);
+    const [totalOwner, setTotalOwner] = useState(0);
+    const [totalRepeated, setTotalRepeated] = useState(0);
+
+    useEffect(() => {
+        const URL = `${apiUrl}/stickers-data`;
+        const AUT = authorization;
+
+        const promise = axios.get(URL, AUT);
+        promise.then((response) => {
+            setTotal(response.data.sumAll);
+            setTotalOwner(response.data.sumOwner);
+            setTotalRepeated(response.data.sumRepeated);
+        }).catch((err) => {
+            console.log(err);
+        });
+    }, [apiUrl, authorization]);
 
     return (
         <Container>
@@ -18,16 +33,16 @@ export default function GeneralFramework() {
             </LeftSide>
             <RightSide>
                 <Porcentage>
-                    <h3>{`10% (68/678)`}</h3>
+                    <h3>{`${Math.round((totalOwner/total)*100)}% (${totalOwner}/${total})`}</h3>
                 </Porcentage>
                 <Data>
                     <div>
                         <h4><strong>Total in the album: </strong>{total}</h4>
-                        <h4><strong>Total you have: </strong>{total-missing}</h4>
+                        <h4><strong>Total you have: </strong>{totalOwner}</h4>
                     </div>
                     <div>
-                        <h4><strong>Total missing: </strong>{missing}</h4>
-                        <h4><strong>Total repeated: </strong>{repeated}</h4>
+                        <h4><strong>Total missing: </strong>{total - totalOwner}</h4>
+                        <h4><strong>Total repeated: </strong>{totalRepeated}</h4>
                     </div>
                 </Data>
             </RightSide>

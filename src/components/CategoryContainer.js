@@ -36,7 +36,6 @@ export default function CategoryContainer({ categoryName, categoryId }) {
         <Container>
             <Title>
                 <h1>{categoryName}</h1>
-                <h2>{`5% (2/80)`}</h2>
             </Title>
             <StickersContainer>
                 {stickersContainer}
