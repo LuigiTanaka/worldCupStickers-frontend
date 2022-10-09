@@ -54,6 +54,15 @@ const Container = styled.div`
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+
+    @media(max-width: 992px) {
+        width: 100%;
+    }
+
+    @media(max-width: 500px) {
+        width: 100%;
+        border-radius: 8px;
+    }
 `
 
 const Title = styled.div`
@@ -85,4 +94,13 @@ const StickersContainer = styled.div`
     grid-template-columns: 38px 38px 38px 38px 38px 38px 38px;
     grid-template-rows: 38px 38px 38px;
     gap: 12px;
+
+    @media(max-width: 992px) {
+        width: 100%;
+    }
+
+    @media(max-width: 500px) {
+        grid-template-columns: 36px 36px 36px 36px 36px 36px;
+        grid-template-rows: 36px 36px 36px 36px;
+    }
 `

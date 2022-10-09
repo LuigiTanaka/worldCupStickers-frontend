@@ -66,7 +66,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #6b0b1a;
+    background-color: #601717;
     padding-bottom: 200px;
 `
 

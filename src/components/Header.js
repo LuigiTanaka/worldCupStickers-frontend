@@ -184,6 +184,7 @@ const Dropdown = styled.div`
         bottom: -45px;  
         background-color: #F0F0E4;
         z-index: 1;
+        box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.25);
     }
     li {
         margin-bottom: 8px;

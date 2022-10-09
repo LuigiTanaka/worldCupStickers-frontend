@@ -59,8 +59,8 @@ const Container = styled.div`
     }
 
     @media(max-width: 500px) {
-        width: 100vh;
-        border-radius: 0;
+        border-radius: 0px;
+        width: 100%;
     }
 `
 
@@ -113,6 +113,8 @@ const CategoriesContainer = styled.div`
     @media(max-width: 992px) {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
     @media(max-width: 500px) {
