@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import styled from "styled-components";
 import { IoChevronDown, IoChevronUp, IoCopySharp, IoExitSharp } from "react-icons/io5";
-import logoHeader from '../../assets/logo-header.svg'
-import defaultAvatar from '../../assets/default-avatar.png';
+import logoHeader from '../assets/images/logo-header.svg'
+import defaultAvatar from '../assets/images/default-avatar.png';
 import { useNavigate } from 'react-router-dom';
-import UserContext from "../../contexts/UserContext";
+import UserContext from "../contexts/UserContext";
 
 export default function Header() {  
     const { user } = useContext(UserContext);
@@ -72,22 +72,20 @@ const Container = styled.div`
     display: flex;
     justify-content: center;
     position: relative;
-    font-family: 'Gemunu Libre', sans-serif;
 `
 
 const HeaderStyled = styled.header`
     width: 100%;
     height: 80px;
-
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 10;
+    z-index: 1;
     background-color: #F0F0E4;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25);
 
     &>img {
         width: 120px;
@@ -113,40 +111,32 @@ const Middle = styled.div`
     align-items: center;
     color: #8B2938;
     border-left: 2px solid #000000;
-
     h1 {
         font-size: 40px;
         font-weight: 700;
     }
-
     div {
         color: #000000;
         display: flex;
         font-size: 25px;
         gap: 10px;
-
         &:hover{
             color: #8B2938;
         }
     }
-
     @media(max-width: 992px) {
         border-left: none;
         padding: 0 20px;
     }
-
     @media(max-width: 700px) {
         padding: 0 10px 0 15px;
-
         h1 {
             font-size: 30px;
         }
-
         div {
             font-size: 20px;
         }
     }
-
     @media(max-width: 600px) {
         div {
             flex-direction: column;
@@ -172,12 +162,10 @@ const Dropdown = styled.div`
             color: #8B2938;
         }
     }
-
     svg {
         font-size: 30px; 
         color: #000000;
     }
-
     img {
         width: 52px;
         height: 52px;
@@ -194,11 +182,10 @@ const Dropdown = styled.div`
         position: absolute;
         right: 0;
         bottom: -45px;  
-
         background-color: #F0F0E4;
         z-index: 1;
+        box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.25);
     }
-
     li {
         margin-bottom: 8px;
         white-space: nowrap;
@@ -206,55 +193,43 @@ const Dropdown = styled.div`
         justify-content: center;
         align-items: center;
         gap: 10px;
-
         font-weight: 600;
         font-size: 22px;
         line-height: 20px;
         letter-spacing: 0.05em;
         color: #000000; 
-
         cursor: pointer;
-
         svg {
             font-size: 26px;
         }
-
         &:hover{
             color: #8B2938;
-
             &>svg {
                 color: #8B2938;
             }
         }
-
         &:last-child{
             margin-bottom: 0;
         }
     }
-
     @media(max-width: 992px) {
         width: 150px;
     }
-
     @media(max-width: 700px) {
         img {
             width: 44px;
             height: 44px;
             margin-right: 10px;
         }
-
         svg {
             font-size: 25px; 
         }
-
         .dropdown-content {
             width: 100px;
         }
-
         li {
             font-size: 18px;
             gap: 6px;
-
             svg {
                 font-size: 20px;
             }
