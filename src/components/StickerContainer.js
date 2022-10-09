@@ -58,6 +58,9 @@ export default function StickerContainer({ stickerId, stickerName, quantity }) {
 }
 
 const Container = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     box-shadow: 1px 1px 1px 1.5px rgba(0, 0, 0, 0.25);
     background-color: ${props => props.quantity ? "#6B1B1A" : "#FFFFFF"};

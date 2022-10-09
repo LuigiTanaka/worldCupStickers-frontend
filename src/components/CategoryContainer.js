@@ -32,6 +32,8 @@ export default function CategoryContainer({ categoryName, categoryId }) {
 
     const stickersContainer = showStickers();
 
+    //adicionar h2 abaixo do h1 no title quando implementar porcentagens
+
     return (
         <Container>
             <Title>

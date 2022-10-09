@@ -1,4 +1,4 @@
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 import { IoClose, IoTrashSharp, IoAddCircleOutline, IoRemoveCircleOutline } from "react-icons/io5";
 import styled from "styled-components";
 import userContext from "../contexts/UserContext";
@@ -7,7 +7,7 @@ import axios from "axios";
 export default function Modal({ showModal, setShowModal }) {
     const modalRef = useRef();
 
-    const { apiUrl, authorization, sticker, update, setUpdate } = useContext(userContext);
+    const { apiUrl, authorization, sticker } = useContext(userContext);
 
     const [repeated, setRepeated] = useState(0);
 

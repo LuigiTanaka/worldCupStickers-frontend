@@ -9,7 +9,7 @@ import axios from "axios";
 import Modal from "../components/Modal";
 
 export default function StickersPage() {
-    const { apiUrl, authorization, showModal, setShowModal, update } = useContext(UserContext);
+    const { apiUrl, authorization, showModal, setShowModal } = useContext(UserContext);
 
     const [groups, setGroups] = useState([]);
     const [loading, setLoading] = useState(<Triangle color="#FFFFFF" height="160" width="160" />);
