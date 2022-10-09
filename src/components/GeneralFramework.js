@@ -46,8 +46,13 @@ const Container = styled.div`
     justify-content: space-between;
 
     @media(max-width: 992px) {
-        width: 90%;
+        width: 600px;
         height: 180px;
+    }
+
+    @media(max-width: 700px) {
+        width: 500px;
+        padding: 20px 10px;
     }
 
     @media(max-width: 500px) {

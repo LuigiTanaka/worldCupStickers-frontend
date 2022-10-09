@@ -89,4 +89,9 @@ const MainBody = styled.div`
     gap: 30px;
     position: relative;
     padding-top: 140px;
+
+    @media(max-width: 500px) {
+        padding-top: 120px; 
+        gap: 60px;
+    }
 `

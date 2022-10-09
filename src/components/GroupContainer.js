@@ -53,6 +53,15 @@ const Container = styled.div`
     border-radius: 8px;
     display: flex;
     flex-direction: column;
+
+    @media(max-width: 992px) {
+        width: 500px;
+    }
+
+    @media(max-width: 500px) {
+        width: 100vh;
+        border-radius: 0;
+    }
 `
 
 const Title = styled.div`
@@ -75,6 +84,21 @@ const Title = styled.div`
         font-size: 18px;
         font-weight: 500;
     }
+
+    @media(max-width: 500px) {
+        border-radius: 0;
+        height: 60px;
+
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 500;
+        }
+    }
 `
 
 const CategoriesContainer = styled.div`
@@ -85,4 +109,13 @@ const CategoriesContainer = styled.div`
     grid-template-rows: 220px 220px;
     row-gap: 30px;
     column-gap: 20px;
+
+    @media(max-width: 992px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media(max-width: 500px) {
+
+    }
 `
