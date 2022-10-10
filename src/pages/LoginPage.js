@@ -57,7 +57,7 @@ export default function Login() {
                         <h3>Password</h3>
                         <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} />
                     </label>
-                    <Button type="submit">login</Button>
+                    <Button id="button" type="submit">login</Button>
                 </>
             )
         } else {
@@ -71,7 +71,7 @@ export default function Login() {
                         <h3>Password</h3>
                         <Input type="password" placeholder="password" onChange={(e) => setPassword(e.target.value)} value={password} disabled={true} />
                     </label>
-                    <Button type="submit" disabled={true}><ThreeDots height={70} width={70} color="#FFFFFF" /></Button>
+                    <Button id="button" type="submit" disabled={true}><ThreeDots height={70} width={70} color="#FFFFFF" /></Button>
                 </>
             )
         }

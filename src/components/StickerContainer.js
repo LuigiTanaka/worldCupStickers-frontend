@@ -4,7 +4,7 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
 export default function StickerContainer({ stickerId, stickerName, quantity, repeatedPage }) {
-    const { apiUrl, authorization, update, setUpdate, disabled, setDisabled, setShowModal, setSticker } = useContext(UserContext);
+    const { apiUrl, authorization, disabled, setDisabled, setShowModal, setSticker } = useContext(UserContext);
 
     function postStickerUser() {
         setDisabled(true);
@@ -15,7 +15,6 @@ export default function StickerContainer({ stickerId, stickerName, quantity, rep
         const promise = axios.post(URL, {}, AUT);
 
         promise.then((response) => {
-            setUpdate(!update);
             setDisabled(false);
         }).catch((err) => {
             console.log(err);
