@@ -9,7 +9,7 @@ import StickersPage from "../pages/StickersPage";
 import RepeatedPage from "../pages/RepeatedPage";
 
 function App() {
-	const apiUrl = "http://localhost:5000";
+	const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
 	const [user, setUser] = useState(getUser);
 	const [sticker, setSticker] = useState({});
