@@ -141,14 +141,12 @@ const Title = styled.div`
     background-color: #601717;
     display: flex;
     flex-direction: column;
-    padding: 100px 20px;
-    align-items: center;
-    font-family: 'Gemunu Libre', sans-serif;
+    padding: 100px 30px;
     color: #FFFFFF;
 
     h1 {
         font-weight: 800;
-        font-size: 86px;
+        font-size: 80px;
         line-height: 117px;
         letter-spacing: 0.05em;
     }
