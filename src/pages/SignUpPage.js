@@ -72,7 +72,7 @@ export default function SignUpPage() {
                         <h3>Picture url (optional)</h3>
                         <Input type="text" placeholder="picture url" onChange={(e) => setPictureUrl(e.target.value)} value={pictureUrl} />
                     </label>
-                    <Button type="submit">sign up</Button>
+                    <Button id="button" type="submit">sign up</Button>
                 </>
             )
         } else {
@@ -98,7 +98,7 @@ export default function SignUpPage() {
                         <h3>Picture url (optional)</h3>
                         <Input type="text" placeholder="picture url" onChange={(e) => setPictureUrl(e.target.value)} value={pictureUrl} disabled={true} />
                     </label>
-                    <Button type="submit" disabled={true}><ThreeDots height={70} width={70} color="#FFFFFF" /></Button>
+                    <Button id="button" type="submit" disabled={true}><ThreeDots height={70} width={70} color="#FFFFFF" /></Button>
                 </>
             )
         }

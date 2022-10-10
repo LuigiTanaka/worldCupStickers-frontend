@@ -118,7 +118,7 @@ const Container = styled.div`
 
 const Title = styled.div`
     width: 100%;
-    height: 72px;
+    height: 70px;
     background-color: #5BD0B8;
     border-radius: 8px 8px 0 0;
     display: flex;

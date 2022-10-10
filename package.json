@@ -45,6 +45,8 @@
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
     "@commitlint/config-conventional": "^17.1.0",
+    "@faker-js/faker": "^7.5.0",
+    "cypress": "^10.9.0",
     "eslint": "^8.24.0",
     "eslint-plugin-react": "^7.31.8",
     "husky": "^8.0.1"
