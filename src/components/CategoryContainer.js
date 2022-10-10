@@ -4,10 +4,12 @@ import StickerContainer from "./StickerContainer";
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
 
-export default function CategoryContainer({ categoryName, categoryId }) {
+export default function CategoryContainer({ categoryName, categoryId, repeatedPage, setLoading }) {
     const { apiUrl, authorization } = useContext(UserContext);
 
     const [stickers, setStickers] = useState([]);
+    let sumTotalInCategory = 0;
+    let sumOwnerInCategory = 0;
 
     useEffect(() => {
         const URL = `${apiUrl}/stickers/${categoryId}`;
@@ -16,28 +18,47 @@ export default function CategoryContainer({ categoryName, categoryId }) {
         const promise = axios.get(URL, AUT);
         promise.then((response) => {
             setStickers(response.data);
+            setLoading(null);
         }).catch((err) => {
             console.log(err);
         });
-    }, [apiUrl, authorization, categoryId]);
+    }, [apiUrl, authorization, categoryId, setLoading]);
 
 
     function showStickers() {
         return (
             <>
-                { stickers.map(sticker => <StickerContainer stickerId={sticker.id} stickerName={sticker.name} quantity={sticker.quantity} />) }
+                { stickers.map((sticker, index) => {
+                    sumTotalInCategory++;
+                    if(sticker.quantity > 0) {
+                        sumOwnerInCategory++;
+                    }
+                    return <StickerContainer key={index} stickerId={sticker.id} stickerName={sticker.name} quantity={sticker.quantity} repeatedPage={repeatedPage} />
+                }) }
             </>
         );
     }
 
-    const stickersContainer = showStickers();
+    function createPorcentage() {
+        if(!repeatedPage) {
+            return (
+                <>
+                    <h2>{`${Math.round((sumOwnerInCategory/sumTotalInCategory)*100)}% (${sumOwnerInCategory}/${sumTotalInCategory})`}</h2>
+                </>
+            );
+        } else {
+            return null;
+        }
+    }
 
-    //adicionar h2 abaixo do h1 no title quando implementar porcentagens
+    const stickersContainer = showStickers();
+    const porcentage = createPorcentage();
 
     return (
         <Container>
             <Title>
                 <h1>{categoryName}</h1>
+                {porcentage}
             </Title>
             <StickersContainer>
                 {stickersContainer}
@@ -90,18 +111,17 @@ const Title = styled.div`
 
 const StickersContainer = styled.div`
     padding: 20px;
+    height: fit-content;
     display: grid;
     justify-content: center;
     grid-template-columns: 38px 38px 38px 38px 38px 38px 38px;
-    grid-template-rows: 38px 38px 38px;
     gap: 12px;
 
     @media(max-width: 992px) {
         width: 100%;
     }
 
-    @media(max-width: 500px) {
+    @media(max-width: 440px) {
         grid-template-columns: 36px 36px 36px 36px 36px 36px;
-        grid-template-rows: 36px 36px 36px 36px;
     }
 `

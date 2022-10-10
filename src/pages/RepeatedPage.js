@@ -8,7 +8,7 @@ import UserContext from "../contexts/UserContext";
 import axios from "axios";
 import Modal from "../components/Modal";
 
-export default function StickersPage() {
+export default function RepeatedPage() {
     const { apiUrl, authorization, showModal, setShowModal } = useContext(UserContext);
 
     const [groups, setGroups] = useState([]);
@@ -30,7 +30,7 @@ export default function StickersPage() {
     function showGroups() {
         return (
             <>
-                { groups.map((group, index) => <GroupContainer key={index} groupName={group.name} groupId={group.id} repeatedPage={false} setLoading={setLoading}/>) }
+                { groups.map((group, index) => <GroupContainer key={index} groupName={group.name} groupId={group.id} repeatedPage={true} setLoading={setLoading} />) }
             </>
         );
     }
