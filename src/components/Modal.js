@@ -113,6 +113,7 @@ const Background = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 2;
+    cursor: pointer;
 `
 
 const ModalWrapper = styled.div`
@@ -125,6 +126,7 @@ const ModalWrapper = styled.div`
     padding: 15px;
     position: relative; 
     border-radius: 8px;
+    cursor: default;
 
     h1 {
         margin-top: 20px;
@@ -142,6 +144,7 @@ const ModalWrapper = styled.div`
         position: absolute;
         top: 6px;
         right: 6px;
+        cursor: pointer;
     }
 
     button {
@@ -219,6 +222,7 @@ const ModalContent = styled.div`
             font-size: 26px;
             box-sizing: content-box;
             padding: 5px 23px;
+            cursor: pointer;
         }
     }
 
@@ -245,6 +249,10 @@ const ModalContent = styled.div`
 
         h3 {
             font-size: 22px;
+        }
+
+        svg {
+            cursor: pointer;
         }
 
         svg:first-child {

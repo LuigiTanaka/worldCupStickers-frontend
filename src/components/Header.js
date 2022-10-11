@@ -93,6 +93,7 @@ const HeaderStyled = styled.header`
         margin-left: 28px;
         align-self: center;
         margin: 0 25px 0 20px;
+        cursor: pointer;
     }
 
     @media(max-width: 992px) {
@@ -114,12 +115,14 @@ const Middle = styled.div`
     h1 {
         font-size: 40px;
         font-weight: 700;
+        cursor: pointer;
     }
     div {
         color: #000000;
         display: flex;
         font-size: 25px;
         gap: 10px;
+        cursor: pointer;
         &:hover{
             color: #8B2938;
         }

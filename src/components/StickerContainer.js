@@ -93,6 +93,7 @@ const Container = styled.div`
     background-color: ${props => props.quantity ? "#6B1B1A" : "#FFFFFF"};
     padding: 0 4px;
     position: relative;
+    cursor: pointer;
 
     h4 {
         font-size: 18px;

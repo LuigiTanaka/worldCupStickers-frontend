@@ -30,19 +30,23 @@ export default function GeneralFramework() {
         const now = Math.round((totalOwner/total)*100);
         if (now < 20) {
             return (
-                <ProgressBar animated variant={"danger"} now={now} />
+                <ProgressBar animated variant={"red"} now={now} />
             );
         } else if (now < 40) {
             return (
-                <ProgressBar animated variant={"warning"} now={now} />
+                <ProgressBar animated variant={"orange"} now={now} />
             );
-        } else if (now < 70) {
+        } else if (now < 75) {
             return (
-                <ProgressBar animated variant={"info"} now={now} />
+                <ProgressBar animated variant={"yellow"} now={now} />
+            );
+        } else if (now < 100){
+            return (
+                <ProgressBar animated variant={"green"} now={now} />
             );
         } else {
             return (
-                <ProgressBar animated variant={"success"} now={now} />
+                <ProgressBar animated variant={"complete"} now={now} />
             );
         }
     }
@@ -177,6 +181,32 @@ const Porcentage = styled.div`
         font-weight: 700;
         color: #6b0b1a;
         margin-bottom: 5px;
+    }
+
+    .bg-red {
+        background-color: #d81c1c;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .bg-orange {
+        background-color: #fc8a00;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .bg-yellow {
+        background-color: #e5d312;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .bg-green {
+        background-color: #549b2b;
+        border-radius: 0 6px 6px 0;
+    }
+
+    .bg-complete {
+        background-color: #CA9B42;
+        border-radius: 0;
+        filter: brightness(1.4);
     }
 
     @media(max-width: 992px) {
