@@ -210,6 +210,7 @@ const Forms = styled.div`
         margin-top: 22px;
         text-decoration-line: underline;
         color: #59101B;
+        cursor: pointer;
     }
 
     @media(max-width: 992px) {
