@@ -4,6 +4,9 @@ import { ThreeDots } from 'react-loader-spinner';
 import axios from "axios";
 import styled from "styled-components";
 import UserContext from "../contexts/UserContext";
+import preview1 from "../assets/images/preview1.jpeg";
+import preview2 from "../assets/images/preview2.jpeg";
+import preview3 from "../assets/images/preview3.jpeg";
 
 export default function SignUpPage() {
     const { setUser, apiUrl } = useContext(UserContext);
@@ -111,6 +114,32 @@ export default function SignUpPage() {
             <Title>
                 <h1>WORLD CUP STICKERS</h1>
                 <h2>save and organize your stickers in an easy and practical way</h2>
+                <div id="my-carousel" className="carousel slide" data-bs-ride="true">
+                    <div className="carousel-indicators">
+                        <button type="button" data-bs-target="#my-carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#my-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#my-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src={preview1} className="d-block w-100 carousel-img" alt="Slide 1" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={preview2} className="d-block w-100 carousel-img" alt="Slide 2" />
+                        </div>
+                        <div className="carousel-item">
+                            <img src={preview3} className="d-block w-100 carousel-img" alt="Slide 3" />
+                        </div>
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#my-carousel" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target="#my-carousel" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
             </Title>
             <Forms>
                 <form onSubmit={signUp}>
@@ -130,8 +159,56 @@ const Container = styled.div`
     width: 100%;
     background-color: #F0F0E4;
 
+    .carousel {
+        width: calc(100% + 60px);
+        display: flex;
+        justify-content: center;
+        background-color: #FFFFFF;
+        padding: 20px 8%;
+        margin: 0 -30px;
+    }
+
+    .carousel-item {
+        height: 320px;
+    }
+
+    .carousel-img {
+        height: 96%;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .carousel-inner {
+        width: 90%;
+    }
+
+    .carousel-control-prev {
+        margin-left: 80px;
+    }
+
+    .carousel-indicators {
+        margin-bottom: 4px;
+        button {
+            background-color: #3f3637;
+            height: 4px;
+        }
+    }
+
+    .carousel-control-next {
+        margin-right: 80px;
+    }
+
+    @media(max-width: 1350px) {
+        .carousel {
+            display: none;
+        }
+    }
+
     @media(max-width: 992px) {
         flex-direction: column;
+
+        .carousel {
+            display: none;
+        }
     }
 `
 
@@ -141,7 +218,7 @@ const Title = styled.div`
     background-color: #601717;
     display: flex;
     flex-direction: column;
-    padding: 100px 30px;
+    padding: 30px 30px;
     color: #FFFFFF;
 
     h1 {
@@ -155,32 +232,12 @@ const Title = styled.div`
         font-weight: 700;
         font-size: 36px;
         line-height: 64px;
+        margin: -14px 0 24px 0;
     }
 
     @media(max-width: 992px) {
         width: 100%;
-        height: 90px;
-        padding: 0;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-        z-index: 1;
-        position: fixed;
-        top: 0;
-
-        h1 {
-            font-size: 60px;
-            line-height: 84px;
-        }
-
-        h2 {
-            display: none;
-        }
-    }
-
-    @media(max-width: 600px) {
-        width: 100%;
-        height: 90px;
+        height: 82px;
         padding: 0;
         align-items: center;
         justify-content: center;
@@ -208,6 +265,12 @@ const Forms = styled.div`
     min-height: 100vh;
     width: 500px;
 
+    img {
+        width: 200px;
+        height: 200px;
+        margin: 50px 0;
+    }
+
     form {
         display: flex;
         flex-direction: column;
@@ -216,7 +279,7 @@ const Forms = styled.div`
     label {
         display: flex;
         flex-direction: column;
-
+        
         h3 {
             font-size: 20px;
             font-weight: 700;
