@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# World Cup Stickers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Uma aplicação capaz de salvar e organizar as figurinhas do álbum da Copa do Mundo Qatar 2022. Com ela o usuário pode ver seu progresso geral, por grupo e por categoria de forma fácil e prática, além de ser capaz de filtrar suas figurinhas exibindo apenas aquelas que possuem repetição. 
 
-## Available Scripts
+GIF
 
-In the project directory, you can run:
+DEPLOY
 
-### `npm start`
+## Sobre
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Esse é um projeto pessoal construído com o objetivo de facilitar a organização das figurinhas da copa do mundo de 2022. Eu, como amante de futebol e colecionador de figurinhas, criei essa aplicação com o intuito de colocar em prática as tecnologias que venho aprendendo nos últimos meses e que, sobretudo, fosse uma algo útil e bem apresentável. Abaixo está listada as principais features que foram implementadas até agora:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Sign up;
+- Sign in;
+- Sign out;
+- Persistência do usuário;
+- Previews da aplicação nas telas de sign in e sign up;
+- Listagem de todas as figurinhas do álbum separadas por grupos e categorias;
+- Adição de uma figurinha nova;
+- Adição de figurinhas repetidas;
+- Deleção de figurinhas;
+- Painel com resumo das informações do progresso geral;
+- Barra de progresso geral e por grupos;
+- Tela com filtragem de figurinhas repetidas;
 
-### `npm test`
+## Tecnologias
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Na construção dessa aplicação foram utilizadas as seguintes ferramentas e frameworks:
+<br>
+<p>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational'>
+  <img style='margin: 5px;' src="https://img.shields.io/badge/react-app%20-%2320232a.svg?&style=for-the-badge&color=60ddf9&logo=react&logoColor=%2361DAFB"/>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/styled-components%20-%2320232a.svg?&style=for-the-badge&color=b8679e&logo=styled-components&logoColor=%3a3a3a'>
+  <img style='margin: 5px;' src="https://img.shields.io/badge/react_route%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/react-icons%20-%2320232a.svg?&style=for-the-badge&color=f28dc7&logo=react-icons&logoColor=%2361DAFB'>
+  <img style='margin: 5px;' src='https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white'>
+</p>
 
-### `npm run build`
+## Como rodar
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone esse repositório 
+3. Clone o repositório do back-end em https://github.com/LuigiTanaka/worldCupStickers-backend
+4. Siga as instruções para rodar o back-end em https://github.com/LuigiTanaka/worldCupStickers-backend
+5. Instale as dependências
+```bash
+npm install
+```
+5. Rode o front-end com o comando
+```bash
+npm start
+```
