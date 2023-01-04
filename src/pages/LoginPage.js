@@ -152,11 +152,11 @@ const Container = styled.div`
     }
 
     .carousel-inner {
-        width: 90%;
+        width: 660px;
     }
 
     .carousel-control-prev {
-        margin-left: 80px;
+        margin-left: calc(50% - 340px);
     }
 
     .carousel-indicators {
@@ -168,7 +168,7 @@ const Container = styled.div`
     }
 
     .carousel-control-next {
-        margin-right: 80px;
+        margin-right: calc(50% - 340px);
     }
 
     @media(max-width: 1350px) {
