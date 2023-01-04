@@ -22,6 +22,7 @@ Esse é um projeto pessoal construído com o objetivo de facilitar a organizaç�
 - Painel com resumo das informações do progresso geral;
 - Barra de progresso geral e por grupos;
 - Tela com filtragem de figurinhas repetidas;
+- Responsividade
 
 ## Tecnologias
 
