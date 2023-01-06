@@ -1,4 +1,4 @@
-# World Cup Stickers
+# World Cup Stickers - front
 
 Uma aplicação capaz de salvar e organizar as figurinhas do álbum da Copa do Mundo Qatar 2022. Com ela o usuário pode ver seu progresso geral, por grupo e por categoria de forma fácil e prática, além de ser capaz de filtrar suas figurinhas exibindo apenas aquelas que possuem repetição. 
 
