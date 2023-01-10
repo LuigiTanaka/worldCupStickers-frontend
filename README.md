@@ -35,11 +35,11 @@ Na construção dessa aplicação foram utilizadas as seguintes ferramentas e fr
   <img style='margin: 5px;' src='https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white'>
 </p>
 
-## Como rodar
+## Como executar
 
 1. Clone esse repositório 
 3. Clone o repositório do back-end em https://github.com/LuigiTanaka/worldCupStickers-backend
-4. Siga as instruções para rodar o back-end em https://github.com/LuigiTanaka/worldCupStickers-backend
+4. Siga as instruções para executar o back-end em https://github.com/LuigiTanaka/worldCupStickers-backend
 5. Instale as dependências
 ```bash
 npm install
