@@ -44,7 +44,7 @@ Na construção do front-end dessa aplicação foram utilizadas as seguintes fer
 ```bash
 npm install
 ```
-5. por fim, execute o comando
+5. Por fim, execute o comando
 ```bash
 npm start
 ```
