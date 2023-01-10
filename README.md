@@ -4,8 +4,6 @@ Uma aplicação capaz de salvar e organizar as figurinhas do álbum da Copa do M
 
 <img src="/src/assets/gifs/world cup stickers.gif" />
 
-Acesse agora em: 
-
 ## Sobre
 
 Esse é um projeto pessoal construído com o objetivo de facilitar a organização das figurinhas da copa do mundo de 2022. Eu, como amante de futebol e colecionador de figurinhas, criei essa aplicação com o intuito de colocar em prática as tecnologias que venho aprendendo nos últimos meses e que, sobretudo, fosse uma algo útil e bem apresentável. Abaixo está listada as principais features que foram implementadas até agora:
