@@ -24,7 +24,7 @@ Esse é um projeto pessoal construído com o objetivo de facilitar a organizaç�
 
 ## Tecnologias
 
-Na construção dessa aplicação foram utilizadas as seguintes ferramentas e frameworks:
+Na construção do front-end dessa aplicação foram utilizadas as seguintes ferramentas e frameworks:
 <br>
 <p>
   <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational'>
